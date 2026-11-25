@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+react-vitals/node_modules/
+
+# Build outputs
+dist/
+react-vitals/dist/
+*.local
+
+# Python & OS
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
