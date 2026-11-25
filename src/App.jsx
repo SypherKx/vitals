@@ -76,9 +76,7 @@ const TAB_ORDER = [
 ];
 
 export default function App() {
-  const [showLanding, setShowLanding] = useState(() => {
-    return localStorage.getItem('vitals_session_active') === 'false';
-  });
+  const [showLanding, setShowLanding] = useState(true);
   const [activeTab, setActiveTab] = useState('dashboard');
   const [transitionDir, setTransitionDir] = useState('forward');
   const [navSweepKey, setNavSweepKey] = useState(0);
