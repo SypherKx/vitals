@@ -337,6 +337,7 @@ export default function App() {
           activeTab={activeTab}
           setActiveTab={navigateTab}
           anomalyCount={anomalies.length}
+          onLogout={handleLogout}
         />
 
         {/* Telehealth Dossier Report Modal */}

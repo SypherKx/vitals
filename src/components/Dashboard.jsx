@@ -191,6 +191,13 @@ export default function Dashboard({
     }]
   };
 
+  const avgSteps = filteredLogs.length ? Math.round(filteredLogs.reduce((s, l) => s + (l.steps || 0), 0) / filteredLogs.length) : 0;
+  const avgSleep = filteredLogs.length ? (filteredLogs.reduce((s, l) => s + (l.sleep || 0), 0) / filteredLogs.length).toFixed(1) : 0;
+  const avgWater = filteredLogs.length ? Math.round(filteredLogs.reduce((s, l) => s + (l.water || 0), 0) / filteredLogs.length) : 0;
+  const weightDelta = filteredLogs.length >= 2
+    ? (filteredLogs[filteredLogs.length - 1].weight - filteredLogs[0].weight).toFixed(1)
+    : '0.0';
+
   return (
     <div>
       {/* Full-bleed NerdWallet-style Green Gradient Hero Band */}
@@ -476,8 +483,11 @@ export default function Dashboard({
           <div className="charts-grid">
             <div className="chart-card">
               <div className="chart-card-header">
-                <h3 className="text-card-title">Weight Trend (kg)</h3>
-                <span className="text-caption">Target: {targetWeight} kg</span>
+                <div>
+                  <h3 className="text-card-title">Weight Trend (kg)</h3>
+                  <span className="text-caption">Target: {targetWeight} kg</span>
+                </div>
+                <span className="badge-ribbon">{Number(weightDelta) <= 0 ? `${weightDelta} kg` : `+${weightDelta} kg`}</span>
               </div>
               <div className="chart-canvas-wrapper">
                 <Line data={weightChartData} options={chartOptions} />
@@ -486,8 +496,11 @@ export default function Dashboard({
 
             <div className="chart-card">
               <div className="chart-card-header">
-                <h3 className="text-card-title">Daily Steps</h3>
-                <span className="text-caption">Target: {stepsGoal.toLocaleString()}</span>
+                <div>
+                  <h3 className="text-card-title">Daily Steps</h3>
+                  <span className="text-caption">Target: {stepsGoal.toLocaleString()}</span>
+                </div>
+                <span className="badge-ribbon">Avg: {avgSteps.toLocaleString()}</span>
               </div>
               <div className="chart-canvas-wrapper">
                 <Bar data={stepsChartData} options={chartOptions} />
@@ -496,8 +509,11 @@ export default function Dashboard({
 
             <div className="chart-card">
               <div className="chart-card-header">
-                <h3 className="text-card-title">Sleep Duration (hrs)</h3>
-                <span className="text-caption">Target: {sleepGoal} hrs</span>
+                <div>
+                  <h3 className="text-card-title">Sleep Duration (hrs)</h3>
+                  <span className="text-caption">Target: {sleepGoal} hrs</span>
+                </div>
+                <span className="badge-ribbon">Avg: {avgSleep}h</span>
               </div>
               <div className="chart-canvas-wrapper">
                 <Line data={sleepChartData} options={chartOptions} />
@@ -506,8 +522,11 @@ export default function Dashboard({
 
             <div className="chart-card">
               <div className="chart-card-header">
-                <h3 className="text-card-title">Water Intake (ml)</h3>
-                <span className="text-caption">Target: {waterGoal} ml</span>
+                <div>
+                  <h3 className="text-card-title">Water Intake (ml)</h3>
+                  <span className="text-caption">Target: {waterGoal} ml</span>
+                </div>
+                <span className="badge-ribbon">Avg: {avgWater.toLocaleString()} ml</span>
               </div>
               <div className="chart-canvas-wrapper">
                 <Bar data={waterChartData} options={chartOptions} />

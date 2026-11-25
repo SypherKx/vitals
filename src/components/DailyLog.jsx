@@ -269,14 +269,14 @@ export default function DailyLog({ logs, profile, onSaveLog, onDeleteLog }) {
             <tbody>
               {logs.slice(0, 14).map((log) => (
                 <tr key={log.date}>
-                  <td><strong>{log.date}</strong></td>
-                  <td>{log.weight} kg</td>
-                  <td>{log.systolic}/{log.diastolic}</td>
-                  <td>{log.water} ml</td>
-                  <td>{log.sleep}h</td>
-                  <td>{log.steps?.toLocaleString()}</td>
-                  <td>{log.calories} kcal</td>
-                  <td>
+                  <td data-label="Date"><strong>{log.date}</strong></td>
+                  <td data-label="Weight">{log.weight} kg</td>
+                  <td data-label="BP">{log.systolic}/{log.diastolic}</td>
+                  <td data-label="Water">{log.water} ml</td>
+                  <td data-label="Sleep">{log.sleep}h</td>
+                  <td data-label="Steps">{log.steps?.toLocaleString()}</td>
+                  <td data-label="Calories">{log.calories} kcal</td>
+                  <td data-label="Actions">
                     <div style={{ display: 'flex', gap: '0.5rem' }}>
                       <button
                         onClick={() => handleDateChange(log.date)}
