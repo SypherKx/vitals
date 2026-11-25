@@ -62,33 +62,36 @@ All physiological calculations run deterministically in pure JavaScript on the c
 
 ### Folder Structure
 ```text
-personal health tracker/
-├── react-vitals/                     # Main React 18 + Vite Application
-│   ├── index.html
-│   ├── package.json
-│   └── src/
-│       ├── main.jsx                  # Entry point + global runtime error trap
-│       ├── App.jsx                   # Routing, session/logout state, directional transitions
-│       ├── index.css                 # Design tokens, responsive grids, print CSS, animations
-│       ├── services/
-│       │   ├── clinicalMath.js       # BMR/TDEE, Navy Body Fat, Framingham, MAP, Anomaly Engine
-│       │   └── storageService.js     # LocalStorage repository, 14-day seeder, CSV/JSON export
-│       └── components/
-│           ├── LandingPage.jsx       # Public landing page with live snapshot preview
-│           ├── Navbar.jsx            # Desktop editorial navigation + Logout + Alert badge
-│           ├── MobileNav.jsx         # Touch-friendly bottom navigation bar (<=900px)
-│           ├── Dashboard.jsx         # Hero band, 5 stat cards, BMI bar, Goal tracker, 4 charts, badges
-│           ├── DailyLog.jsx          # Daily biometric entry + quick water steppers + audit table
-│           ├── BodyCompLab.jsx       # U.S. Navy Body Fat & Lean/Fat Mass analyzer
-│           ├── CardioRisk.jsx        # Framingham 10-year risk, vascular age & AHA BP staging
-│           ├── NutritionLab.jsx      # Macro partitioning calculator across 4 diet strategies
-│           ├── Workouts.jsx          # Exercise session logger & weekly active volume
-│           ├── MedicationManager.jsx # Prescription/supplement adherence checklist
-│           ├── Settings.jsx          # Profile configuration, JSON/CSV export, reset
-│           └── ReportModal.jsx       # Printable Telehealth Clinical Dossier
-├── generate_synopsis.py              # ReportLab script to generate academic synopsis PDF
-├── PROJECT_SYNOPSIS_VITALS.pdf       # Ready-to-submit B.Tech Project Synopsis PDF
-└── README.md                         # Project documentation
+vitals/
+├── docs/
+│   └── PROJECT_SYNOPSIS_VITALS.pdf   # Ready-to-submit B.Tech Project Synopsis PDF
+├── public/
+│   ├── favicon.svg                   # Custom Vitals ECG pulse brand icon
+│   └── icons.svg
+├── src/
+│   ├── components/
+│   │   ├── LandingPage.jsx           # Public landing page with live snapshot preview
+│   │   ├── Navbar.jsx                # Desktop editorial navigation + Logout + Alert badge
+│   │   ├── MobileNav.jsx             # Touch-friendly bottom navigation bar (<=900px)
+│   │   ├── Dashboard.jsx             # Hero band, 5 stat cards, BMI bar, Goal tracker, 4 charts, badges
+│   │   ├── DailyLog.jsx              # Daily biometric entry + quick water steppers + audit table
+│   │   ├── BodyCompLab.jsx           # U.S. Navy Body Fat & Lean/Fat Mass analyzer
+│   │   ├── CardioRisk.jsx            # Framingham 10-year risk, vascular age & AHA BP staging
+│   │   ├── NutritionLab.jsx          # Macro partitioning calculator across 4 diet strategies
+│   │   ├── Workouts.jsx              # Exercise session logger & weekly active volume
+│   │   ├── MedicationManager.jsx     # Prescription/supplement adherence checklist
+│   │   ├── Settings.jsx              # Profile configuration, JSON/CSV export, reset
+│   │   └── ReportModal.jsx           # Printable Telehealth Clinical Dossier
+│   ├── services/
+│   │   ├── clinicalMath.js           # BMR/TDEE, Navy Body Fat, Framingham, MAP, Anomaly Engine
+│   │   └── storageService.js         # LocalStorage repository, 14-day seeder, CSV/JSON export
+│   ├── App.jsx                       # Routing, session/logout state, directional transitions
+│   ├── index.css                     # Design tokens, responsive grids, print CSS, animations
+│   └── main.jsx                      # Entry point + global runtime error trap
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
 ```
 
 ---
@@ -102,7 +105,7 @@ personal health tracker/
 ```bash
 # 1. Clone the repository
 git clone https://github.com/SypherKx/vitals.git
-cd vitals/react-vitals
+cd vitals
 
 # 2. Install dependencies
 npm install
@@ -148,4 +151,4 @@ All data is stored locally under isolated `vitals_react_*` keys:
 
 ## 8. Academic Synopsis Document
 
-A formal 10-section academic synopsis PDF ([PROJECT_SYNOPSIS_VITALS.pdf](./PROJECT_SYNOPSIS_VITALS.pdf)) is included in the repository root for B.Tech project evaluation and submission.
+A formal 10-section academic synopsis PDF ([PROJECT_SYNOPSIS_VITALS.pdf](./docs/PROJECT_SYNOPSIS_VITALS.pdf)) is included in `docs/` for B.Tech project evaluation and submission.
